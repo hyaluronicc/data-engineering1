@@ -68,13 +68,13 @@ def load(**kwargs):
 
 
 extract = PythonOperator(task_id = 'extract', 
-                        python_callable = extract, provide_context = True)
+                        python_callable = extract, provide_context = True, dag = dag)
 
 transform = PythonOperator(task_id = 'transform', 
-                            python_callable = transform, provide_context = True)
+                            python_callable = transform, provide_context = True, dag = dag)
 
 load = PythonOperator(task_id = 'load', 
-                        python_callable = load, provide_context = True)
+                        python_callable = load, provide_context = True, dag = dag)
 
 
 extract >> transform >> load
