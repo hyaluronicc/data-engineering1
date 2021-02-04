@@ -68,7 +68,7 @@ def load(**kwargs):
 link = "https://s3-geospatial.s3-us-west-2.amazonaws.com/name_gender.csv"
 
 extract = PythonOperator(task_id = 'extract', 
-                        python_callable = extract, provide_context = True, dag = dag)
+                        python_callable = extract, provide_context = False, dag = dag)
 
 transform = PythonOperator(task_id = 'transform', 
                             python_callable = transform, provide_context = True, dag = dag)
