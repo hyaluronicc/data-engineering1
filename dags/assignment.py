@@ -27,7 +27,6 @@ def get_Redshift_connection():
     return conn.cursor()
 
 def extract(link):
-    link = "https://s3-geospatial.s3-us-west-2.amazonaws.com/name_gender.csv"
     f = requests.get(link)
     return (f.text)
 
@@ -66,6 +65,7 @@ def load(**kwargs):
     sql = "END;"
     cur.execute(sql)
 
+link = "https://s3-geospatial.s3-us-west-2.amazonaws.com/name_gender.csv"
 
 extract = PythonOperator(task_id = 'extract', 
                         python_callable = extract, provide_context = True, dag = dag)
